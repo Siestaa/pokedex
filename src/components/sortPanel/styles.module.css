@@ -1,0 +1,75 @@
+.sortContainer {
+	position: relative;
+	margin-top: 40px;
+	width: auto;
+}
+
+.currentSortContainer {
+	padding: 10px 14px;
+	border-radius: 8px;
+	background-color: var(--White);
+	border: 2px solid var(--DarkGray16);
+	width: fit-content;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.currentSortText {
+	font-size: 14px;
+	font-weight: 600;
+	user-select: none;
+}
+
+.sortIcon {
+	transform: rotate(0deg);
+	fill: var(--DarkGray);
+	transition: .2s;
+}
+
+.openIcon {
+	transform: rotate(-180deg);
+}
+
+.sortListContainer {
+	position: absolute;
+	padding: 6px;
+	background-color: var(--White);
+	border: 2px solid var(--DarkGray16);
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	z-index: 2;
+	user-select: none;
+	bottom: -150px;
+	gap: 2px;
+}
+
+.sortItem {
+	padding: 8px 7px;
+	border-radius: 8px;
+	background-color: transparent;
+	transition: .2s;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+	font-size: 12px;
+
+	&:hover {
+		background-color: var(--DarkGray8);
+	}
+}
+
+.activeSort {
+	background-color: var(--DarkGray16);
+
+	&:hover {
+		background-color: var(--DarkGray16);
+	}
+}
+
+.checkIcon {
+	stroke: var(--DarkGray);
+}

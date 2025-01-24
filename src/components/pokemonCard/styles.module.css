@@ -1,0 +1,111 @@
+.cardContainer {
+	width: 322px;
+	height: 260px;
+	background-color: green;
+	border-radius: 16px;
+	box-shadow: 0 11px 20px 0 rgba(145, 145, 145, 0.16);
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+	position: relative;
+}
+
+.cardName {
+	font-size: 28px;
+	font-weight: 600;
+	color: var(--White);
+}
+
+.cardNumber {
+	font-size: 18px;
+	font-weight: 600;
+	color: var(--White80);
+	margin-top: 8px;
+}
+
+.cardImage {
+	position: absolute;
+	top: -90px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.typesCardContainer {
+	margin-top: 20px;
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+.fire {
+	background-color: var(--Fire);
+}
+
+.bug {
+	background-color: var(--Bug);
+}
+
+.water {
+	background-color: var(--Water);
+}
+
+.flying {
+	background: var(--Flying);
+}
+
+.poison {
+	background-color: var(--Poison);
+}
+
+.normal {
+	background-color: var(--Normal);
+}
+
+.rock {
+	background-color: var(--Rock);
+}
+
+.ground {
+	background-color: var(--Ground);
+}
+
+.fighting {
+	background-color: var(--Fighting);
+}
+
+.ghost {
+	background-color: var(--Ghost);
+}
+
+.psychic {
+	background-color: var(--Psychic);
+}
+
+.ice {
+	background-color: var(--Ice);
+}
+
+.dragon {
+	background-color: var(--Dragon);
+}
+
+.dark {
+	background-color: var(--Dark);
+}
+
+.fairy {
+	background-color: var(--Fairy);
+}
+
+.electric {
+	background-color: var(--Electric);
+}
+
+.steel {
+	background-color: var(--Steel);
+}
+
+.grass {
+	background-color: var(--Grass);
+}

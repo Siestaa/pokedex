@@ -1,7 +1,16 @@
-import type { NextConfig } from "next";
+import { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+	images: {
+		domains: ['www.pokemon.com'],
+	},
+	webpack: config => {
+		config.module.rules.push({
+			test: /\.svg$/,
+			use: ['@svgr/webpack'],
+		})
+		return config
+	},
+}
 
-export default nextConfig;
+export default nextConfig

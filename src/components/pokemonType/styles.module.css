@@ -1,0 +1,86 @@
+.typeContainer {
+	display: flex;
+	padding: 8px 12px;
+	border-radius: 999px;
+}
+
+.typeText {
+	font-size: 16px;
+	color: var(--DarkGray);
+
+	&::first-letter {
+		text-transform: capitalize;
+	}
+}
+
+.fire {
+	background-color: var(--FireTag);
+}
+
+.bug {
+	background-color: var(--BugTag);
+}
+
+.water {
+	background-color: var(--WaterTag);
+}
+
+.flying {
+	background: var(--FlyingTag);
+}
+
+.poison {
+	background-color: var(--PoisonTag);
+}
+
+.normal {
+	background-color: var(--NormalTag);
+}
+
+.rock {
+	background-color: var(--RockTag);
+}
+
+.ground {
+	background-color: var(--GroundTag);
+}
+
+.fighting {
+	background-color: var(--FightingTag);
+}
+
+.ghost {
+	background-color: var(--GhostTag);
+}
+
+.psychic {
+	background-color: var(--PsychicTag);
+}
+
+.ice {
+	background-color: var(--IceTag);
+}
+
+.dragon {
+	background-color: var(--DragonTag);
+}
+
+.dark {
+	background-color: var(--DarkTag);
+}
+
+.fairy {
+	background-color: var(--FairyTag);
+}
+
+.electric {
+	background-color: var(--ElectricTag);
+}
+
+.steel {
+	background-color: var(--SteelTag);
+}
+
+.grass {
+	background-color: var(--GrassTag);
+}
