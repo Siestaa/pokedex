@@ -1,8 +1,8 @@
+import { FilterSortPanel } from '@/components/filterSortPanel/filterSortPanel'
 import { Roboto } from 'next/font/google'
 import { Header } from '../components/header/header'
 import { PokemonList } from '../components/pokemonList/pokemonList'
 import { SearchPanel } from '../components/searchPanel/searchPanel'
-import { SortPanel } from '../components/sortPanel/sortPanel'
 import "./page.module.css"
 
 const roboto = Roboto({
@@ -16,7 +16,7 @@ export default function Home() {
     <main className={roboto.className}>
       <Header />
       <SearchPanel />
-      <SortPanel />
+      <FilterSortPanel />
       <PokemonList />
     </main>
   )

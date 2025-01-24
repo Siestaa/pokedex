@@ -17435,10 +17435,6 @@ const allPokemons = [
 		type: ['poison', 'ghost'],
 	},
 ]
-
-export const dynamic = 'force-dynamic' // Указываем, что это статическая страница
-export const revalidate = 180 // Страница будет обновляться раз в 60 секунд
-
 export async function GET(request: Request) {
 	const url = new URL(request.url)
 	const page = parseInt(url.searchParams.get('page') || '1', 10)

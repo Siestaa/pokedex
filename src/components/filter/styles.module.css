@@ -1,0 +1,11 @@
+.filterButton {
+	display: flex;
+	padding: 10px 22px;
+	border-radius: 999px;
+	background-color: var(--White);
+	border: 2px solid var(--DarkGray16);
+	gap: 8px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 600;
+}
