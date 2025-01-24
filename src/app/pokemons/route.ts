@@ -17436,7 +17436,7 @@ const allPokemons = [
 	},
 ]
 
-export const dynamic = 'force-static' // Указываем, что это статическая страница
+export const dynamic = 'force-dynamic' // Указываем, что это статическая страница
 export const revalidate = 180 // Страница будет обновляться раз в 60 секунд
 
 export async function GET(request: Request) {
