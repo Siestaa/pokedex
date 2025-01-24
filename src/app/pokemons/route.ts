@@ -17436,42 +17436,48 @@ const allPokemons = [
 	},
 ]
 
+export const dynamic = "force-static"; // Указываем, что это статическая страница
+export const revalidate = 180; // Страница будет обновляться раз в 60 секунд
+
 export async function GET(request: Request) {
-	const url = new URL(request.url)
-	const page = parseInt(url.searchParams.get('page') || '1', 10)
-	const sort = url.searchParams.get('sort') || 'MinId'
-	const limit = 50
+  const url = new URL(request.url);
+  const page = parseInt(url.searchParams.get('page') || '1', 10);
+  const sort = url.searchParams.get('sort') || 'MinId';
+  const limit = 50;
 
-	const startIndex = (page - 1) * limit
-	const endIndex = startIndex + limit
+  const startIndex = (page - 1) * limit;
+  const endIndex = startIndex + limit;
 
-	const sortedPokemons = [...allPokemons]
+  let sortedPokemons = allPokemons;
 
-	switch (sort) {
-		case 'MinId':
-			sortedPokemons.sort((pokemonA, pokemonB) => pokemonA.id - pokemonB.id)
-			break
-		case 'MaxId':
-			sortedPokemons.sort((pokemonA, pokemonB) => pokemonB.id - pokemonA.id)
-			break
-		case 'AToZ':
-			sortedPokemons.sort((pokemonA, pokemonB) =>
-				pokemonA.name.localeCompare(pokemonB.name)
-			)
-			break
-		case 'ZToA':
-			sortedPokemons.sort((pokemonA, pokemonB) =>
-				pokemonB.name.localeCompare(pokemonA.name)
-			)
-			break
-	}
+  switch (sort) {
+    case 'MinId':
+      sortedPokemons = allPokemons.sort(
+        (pokemonA, pokemonB) => pokemonA.id - pokemonB.id
+      );
+      break;
+    case 'MaxId':
+      sortedPokemons = allPokemons.sort(
+        (pokemonA, pokemonB) => pokemonB.id - pokemonA.id
+      );
+      break;
+    case 'AToZ':
+      sortedPokemons = allPokemons.sort((pokemonA, pokemonB) =>
+        pokemonA.name > pokemonB.name ? 1 : -1
+      );
+      break;
+    case 'ZToA':
+      sortedPokemons = allPokemons.sort((pokemonA, pokemonB) =>
+        pokemonB.name > pokemonA.name ? 1 : -1
+      );
+      break;
+  }
 
-	const paginatedPokemons = sortedPokemons.slice(startIndex, endIndex)
+  const paginatedPokemons = sortedPokemons.slice(startIndex, endIndex);
 
-	return NextResponse.json({
-		page,
-		total: allPokemons.length,
-		totalPages: Math.ceil(allPokemons.length / limit),
-		pokemons: paginatedPokemons,
-	})
-}
+  return NextResponse.json({
+    page,
+    total: allPokemons.length,
+    totalPages: Math.ceil(allPokemons.length / limit),
+    pokemons: paginatedPokemons,
+  });
