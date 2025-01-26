@@ -9,6 +9,7 @@ export const RootStore = t
 		itemsPerPage: t.optional(t.number, 50),
 		totalItems: t.optional(t.number, 1025),
 		sort: t.enumeration('Sort', ['MinId', 'MaxId', 'AToZ', 'ZToA']),
+		showFilter: t.boolean,
 	})
 	.actions(store => ({
 		fetchPokemon: flow(function* (page = 1) {
@@ -29,6 +30,9 @@ export const RootStore = t
 		changeSort: function (sort = 'MinId') {
 			store.sort = sort
 		},
+		openFilter: function (showFilter = false) {
+			store.showFilter = showFilter
+		},
 	}))
 
 export type RootStoreType = Instance<typeof RootStore>
@@ -40,6 +44,7 @@ export function useStore() {
 		rootStore = RootStore.create({
 			pokemon: [],
 			sort: 'MinId',
+			showFilter: false,
 		})
 	}
 	return rootStore

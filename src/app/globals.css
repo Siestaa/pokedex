@@ -59,9 +59,6 @@ body {
 	--Electric: #B7B117;
 	--Steel: #448F85;
 	--Grass: #1EBA11;
-
-
-
 }
 
 a {
@@ -72,4 +69,14 @@ a {
 body {
 	padding: 48px 64px;
 	background-color: var(--LightGray);
+}
+
+.filterBlur {
+	display: block;
+	width: 75vw;
+	height: 100dvh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: var(--DarkGray16);
 }

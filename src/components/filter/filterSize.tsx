@@ -10,20 +10,33 @@ import SmallWeight from '/public/icons/small-weight.svg'
 
 interface FilterTypeProps {
 	size: PokemonHeight | PokemonWeight
-	type: 'weight' | 'height'
+	type: 'weight' | 'height',
 }
 
-export const FilterType = ({ size, type }: FilterTypeProps) => {
+const iconMapping = {
+	height: {
+		small: SmallHeight,
+		medium: MediumHeight,
+		large: LargeHeight,
+	},
+	weight: {
+		small: SmallWeight,
+		medium: MediumWeight,
+		large: LargeWeight,
+	},
+}
+
+export const FilterSize = ({ size, type }: FilterTypeProps) => {
 	const [isActive, setIsActive] = useState(false)
 
+	const IconComponent = iconMapping[type][size]
+
 	return (
-		<div className={styles.typesContainer} onClick={() => setIsActive(prev => !prev)}>
-			<SmallHeight />
-			<SmallWeight />
-			<MediumHeight />
-			<MediumWeight />
-			<LargeHeight />
-			<LargeWeight />
+		<div
+			className={`${styles.sizeContainer} ${isActive ? styles.activeSize : ''}`}
+			onClick={() => setIsActive((prev) => !prev)}
+		>
+			<IconComponent className={styles.sizeIcon} />
 		</div>
 	)
 }
