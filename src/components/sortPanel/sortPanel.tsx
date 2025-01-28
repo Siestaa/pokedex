@@ -35,7 +35,7 @@ export const SortPanel = observer(() => {
 			return
 		}
 		rootStore.fetchPokemon()
-	}, [currentSort])
+	}, [currentSort, rootStore])
 
 	return (
 		<div className={styles.sortContainer} ref={panelRef}>

@@ -4,8 +4,8 @@ import styles from "./styles.module.css"
 export const EmptyPokemonList = () => {
 	return (
 		<div className={styles.listContainer}>
-			<p className={styles.emptyText}></p>
 			<LoaderIcon />
+			<p className={styles.emptyText}>No pokémon matched your search!</p>
 		</div>)
 
 }

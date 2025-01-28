@@ -25,7 +25,6 @@ export const PokemonList = observer(() => {
 
 	useEffect(() => {
 		const handleIntersect: IntersectionObserverCallback = (entries) => {
-			console.log('hey')
 			const target = entries[0]
 			if (
 				target.isIntersecting &&
@@ -66,6 +65,7 @@ export const PokemonList = observer(() => {
 					<div
 						key={poke.id}
 						ref={triggerFetchPokemon === poke.name ? lastElementRef : null}
+						data-test={triggerFetchPokemon === poke.name}
 					>
 						<PokemonCard
 							name={poke.name}
