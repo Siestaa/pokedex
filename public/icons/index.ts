@@ -23,6 +23,7 @@ import LoaderIcon from './loader.svg'
 import MediumHeightIcon from './medium-height.svg'
 import MediumWeightIcon from './medium-weight.svg'
 import NormalIcon from './normal.svg'
+import NotLoadIcon from './notLoad.svg'
 import PoisonIcon from './poison.svg'
 import PokeballIcon from './pokeball.svg'
 import PokedexLogoIcon from './Pokedex-logo.svg'
@@ -60,6 +61,7 @@ export {
 	MediumHeightIcon,
 	MediumWeightIcon,
 	NormalIcon,
+	NotLoadIcon,
 	PoisonIcon,
 	PokeballIcon,
 	PokedexLogoIcon,

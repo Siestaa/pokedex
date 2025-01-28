@@ -1,4 +1,4 @@
-export const useCurrentCoordinate = (
+export const calculateCoordinate = (
 	event: MouseEvent,
 	bounds: DOMRect,
 	div: React.RefObject<HTMLDivElement>,

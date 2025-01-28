@@ -5,7 +5,7 @@ import { useRef } from 'react'
 import { PokeballIcon } from '../../../public/icons'
 import { PokemonType } from '../pokemonType/pokemonType'
 import styles from "./styles.module.css"
-import { useCurrentCoordinate } from './useCurrentCoordinate'
+import { calculateCoordinate } from './useCurrentCoordinate'
 interface PokemonCardProps {
 	name: string
 	number: string
@@ -18,15 +18,12 @@ export const PokemonCard = ({ name, number, img, types, alt }: PokemonCardProps)
 	const card = useRef<HTMLDivElement>(null)
 	const glow = useRef<HTMLDivElement>(null)
 
+
+
 	const getCoordinate = (e: MouseEvent) => {
 		const bounds = card.current?.getBoundingClientRect()
 		if (bounds) {
-			useCurrentCoordinate(
-				e,
-				bounds,
-				card as React.RefObject<HTMLDivElement>,
-				glow as React.RefObject<HTMLDivElement>
-			)
+			calculateCoordinate(e, bounds, card as React.RefObject<HTMLDivElement>, glow as React.RefObject<HTMLDivElement>)
 		}
 	}
 
