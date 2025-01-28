@@ -65,7 +65,6 @@ export const PokemonList = observer(() => {
 					<div
 						key={poke.id}
 						ref={triggerFetchPokemon === poke.name ? lastElementRef : null}
-						data-test={triggerFetchPokemon === poke.name}
 					>
 						<PokemonCard
 							name={poke.name}
