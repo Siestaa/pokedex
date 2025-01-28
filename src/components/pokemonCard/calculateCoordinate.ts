@@ -21,7 +21,7 @@ export const calculateCoordinate = (
         ${center.y / 100},
         ${-center.x / 100},
         0,
-        ${Math.log(distance) * 2.5}deg
+        ${Math.log(distance) * 2.4}deg
       )
     `
 	}

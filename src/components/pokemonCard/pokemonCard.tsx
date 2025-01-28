@@ -4,8 +4,8 @@ import Image from 'next/image'
 import { useRef } from 'react'
 import { PokeballIcon } from '../../../public/icons'
 import { PokemonType } from '../pokemonType/pokemonType'
+import { calculateCoordinate } from './calculateCoordinate'
 import styles from "./styles.module.css"
-import { calculateCoordinate } from './useCurrentCoordinate'
 interface PokemonCardProps {
 	name: string
 	number: string
