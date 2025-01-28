@@ -1,11 +1,11 @@
 import { useStore } from '@/models/rootStore'
 import { observer } from 'mobx-react-lite'
-import { FilterApplyButtons } from './filterApplyButtons'
-import { FilterSize } from './filterSize'
-import { FilterType } from './filterType'
-import { PokemonHeight, PokemonType, PokemonWeight } from './filterTypes'
+import { CrossIcon } from '../../../public/icons'
 import styles from "./styles.module.css"
-import Cross from "/public/icons/cross.svg"
+import { FilterApplyButtons } from './ui/filterApplyButtons'
+import { FilterSize } from './ui/filterSize'
+import { FilterType } from './ui/filterType'
+import { PokemonHeight, PokemonType, PokemonWeight } from './ui/filterTypes'
 
 export const FilterPanel = observer(() => {
 	const rootStore = useStore()
@@ -26,14 +26,14 @@ export const FilterPanel = observer(() => {
 	}))
 
 	const closeFilter = () => {
-		rootStore.openFilter(false)
+		rootStore.toggleFilter(false)
 	}
 
 	return (
 		<div className={styles.filterContainer}>
 			<div className={styles.titleContainer}>
 				<h2 className={styles.filterTitle}>Filters</h2>
-				<Cross className={styles.crossIcon} onClick={closeFilter} />
+				<CrossIcon className={styles.crossIcon} onClick={closeFilter} />
 			</div>
 			<div className={styles.typesContainer}>
 				<h3 className={styles.typesTitle}>Types</h3>

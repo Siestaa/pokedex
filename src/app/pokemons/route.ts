@@ -17438,43 +17438,102 @@ const allPokemons = [
 export async function GET(request: Request) {
 	const url = new URL(request.url)
 	const page = parseInt(url.searchParams.get('page') || '1', 10)
-	const sort = url.searchParams.get('sort') || 'MinId'
 	const limit = 50
+
+	const defaultFilters = {
+		types: [],
+		height: [],
+		weight: [],
+		text: '',
+		sort: 'MinId',
+	}
+	const customFilters = (() => {
+		try {
+			return JSON.parse(
+				url.searchParams.get('filters') || JSON.stringify(defaultFilters)
+			)
+		} catch {
+			return defaultFilters
+		}
+	})()
 
 	const startIndex = (page - 1) * limit
 	const endIndex = startIndex + limit
 
-	let sortedPokemons = allPokemons
-
-	switch (sort) {
-		case 'MinId':
-			sortedPokemons = allPokemons.sort(
-				(pokemonA, pokemonB) => pokemonA.id - pokemonB.id
-			)
-			break
-		case 'MaxId':
-			sortedPokemons = allPokemons.sort(
-				(pokemonA, pokemonB) => pokemonB.id - pokemonA.id
-			)
-			break
-		case 'AToZ':
-			sortedPokemons = allPokemons.sort((pokemonA, pokemonB) =>
-				pokemonA.name > pokemonB.name ? 1 : -1
-			)
-			break
-		case 'ZToA':
-			sortedPokemons = allPokemons.sort((pokemonA, pokemonB) =>
-				pokemonB.name > pokemonA.name ? 1 : -1
-			)
-			break
+	const sortStrategies: Record<string, (a: any, b: any) => number> = {
+		MinId: (a, b) => a.id - b.id,
+		MaxId: (a, b) => b.id - a.id,
+		AToZ: (a, b) => a.name.localeCompare(b.name),
+		ZToA: (a, b) => b.name.localeCompare(a.name),
 	}
 
-	const paginatedPokemons = sortedPokemons.slice(startIndex, endIndex)
+	const sortedPokemons = [...allPokemons].sort(
+		sortStrategies[customFilters.sort] || sortStrategies.MinId
+	)
+
+	const applyRangeFilter = (
+		items: any[],
+		filters: string[],
+		key: 'height' | 'weight',
+		ranges: Record<string, (value: number) => boolean>
+	) => {
+		if (filters.length === 0) return items
+		return items.filter(item =>
+			filters.some(filter => ranges[filter](item[key]))
+		)
+	}
+
+	const sizeRanges = {
+		height: {
+			small: (value: number) => value < 10,
+			medium: (value: number) => value >= 10 && value < 100,
+			large: (value: number) => value >= 100,
+		},
+		weight: {
+			small: (value: number) => value < 10,
+			medium: (value: number) => value >= 10 && value < 100,
+			large: (value: number) => value >= 100,
+		},
+	}
+
+	let filteredPokemons = sortedPokemons
+
+	if (customFilters.text) {
+		filteredPokemons = filteredPokemons.filter(
+			pokemon =>
+				pokemon.name.toLowerCase().includes(customFilters.text.toLowerCase()) ||
+				pokemon.type.some(item =>
+					item.includes(customFilters.text.toLowerCase())
+				) ||
+				pokemon.number.includes(customFilters.text)
+		)
+	}
+
+	if (customFilters.types.length > 0) {
+		filteredPokemons = filteredPokemons.filter(pokemon =>
+			pokemon.type.some(type => customFilters.types.includes(type))
+		)
+	}
+
+	filteredPokemons = applyRangeFilter(
+		filteredPokemons,
+		customFilters.height,
+		'height',
+		sizeRanges.height
+	)
+	filteredPokemons = applyRangeFilter(
+		filteredPokemons,
+		customFilters.weight,
+		'weight',
+		sizeRanges.weight
+	)
+
+	const paginatedPokemons = filteredPokemons.slice(startIndex, endIndex)
 
 	return NextResponse.json({
 		page,
-		total: allPokemons.length,
-		totalPages: Math.ceil(allPokemons.length / limit),
+		totalPokemons: filteredPokemons.length,
+		totalPages: Math.ceil(filteredPokemons.length / limit),
 		pokemons: paginatedPokemons,
 	})
 }

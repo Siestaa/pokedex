@@ -1,5 +1,26 @@
 import { t } from 'mobx-state-tree'
 
+const PokemonType = t.enumeration('PokemonType', [
+	'bug',
+	'dark',
+	'dragon',
+	'electric',
+	'fairy',
+	'fighting',
+	'fire',
+	'flying',
+	'ghost',
+	'grass',
+	'ground',
+	'ice',
+	'normal',
+	'poison',
+	'psychic',
+	'rock',
+	'steel',
+	'water',
+])
+
 export const PokemonModel = t.model('PokemonModel', {
 	abilities: t.array(t.string), // Массив строк для способностей
 	detailPageURL: t.string, // URL страницы с деталями
@@ -14,5 +35,13 @@ export const PokemonModel = t.model('PokemonModel', {
 	ThumbnailAltText: t.string, // Текст альтернативного описания
 	ThumbnailImage: t.string, // URL изображения покемона
 	id: t.number, // ID покемона
-	type: t.array(t.string), // Массив типов покемона
+	type: t.array(PokemonType), // Массив типов покемона, ограничен конкретными значениями
+})
+
+export const PokemonFiltersModel = t.model('PokemonFilters', {
+	types: t.array(PokemonType), // Фильтр типов
+	height: t.array(t.string), // Фильтр по росту
+	weight: t.array(t.string), // Фильтр по весу
+	text: t.string, // Поиск по тексту
+	sort: t.enumeration('Sort', ['MinId', 'MaxId', 'AToZ', 'ZToA']), // Сортировка
 })

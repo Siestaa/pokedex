@@ -1,0 +1,52 @@
+.skeletonContainer {
+	width: 322px;
+	height: 260px;
+	background-color: rgba(211, 212, 216, 1);
+	border-radius: 16px;
+	box-shadow: 0 11px 20px 0 rgba(145, 145, 145, 0.16);
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	position: relative;
+}
+
+.skeletonName {
+	width: 102px;
+	height: 33px;
+	border-radius: 999px;
+	background-color: rgba(170, 170, 170, 1);
+}
+
+.skeletonNumber {
+	width: 42px;
+	height: 18px;
+	border-radius: 999px;
+	background-color: rgba(170, 170, 170, 1);
+	margin-top: 8px;
+}
+
+.skeletonImage {
+	position: absolute;
+	top: -40px;
+	left: 50%;
+	transform: translateX(-50%);
+	border-radius: 6px;
+	background-color: rgba(170, 170, 170, 1);
+	width: 180px;
+	height: 134px;
+}
+
+.skeletonTypesContainer {
+	margin-top: 20px;
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+.skeletonType {
+	width: 86px;
+	height: 35px;
+	border-radius: 999px;
+	background-color: rgba(170, 170, 170, 1);
+}

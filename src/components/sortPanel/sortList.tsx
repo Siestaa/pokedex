@@ -1,50 +1,54 @@
 import { useStore } from '@/models/rootStore'
 import { observer } from 'mobx-react-lite'
-import styles from "./styles.module.css"
-import Check from "/public//icons//check.svg"
+import { CheckIcon } from '../../../public/icons'
+import styles from './styles.module.css'
 
 enum Sorts {
-	Min = "Lowest Number First",
-	Max = "Highest Number First",
-	AZ = "Alphabetically (A-Z)",
-	ZA = "Alphabetically (Z-A)",
+	Min = 'Lowest Number First',
+	Max = 'Highest Number First',
+	AZ = 'Alphabetically (A-Z)',
+	ZA = 'Alphabetically (Z-A)',
 }
 
 const sortOptions = [
-	{ id: "MinId", text: Sorts.Min },
-	{ id: "MaxId", text: Sorts.Max },
-	{ id: "AToZ", text: Sorts.AZ },
-	{ id: "ZToA", text: Sorts.ZA },
+	{ id: 'MinId', label: Sorts.Min },
+	{ id: 'MaxId', label: Sorts.Max },
+	{ id: 'AToZ', label: Sorts.AZ },
+	{ id: 'ZToA', label: Sorts.ZA },
 ]
 
 interface SortListProps {
 	currentSort: string
-	setCurrentSort: (el: string) => void
-	setIsListOpen: (el: boolean) => void
+	setCurrentSort: (sort: string) => void
+	setIsListOpen: (isOpen: boolean) => void
 }
 
-export const SortList = observer(({ currentSort, setCurrentSort, setIsListOpen }: SortListProps) => {
-	const rootStore = useStore()
+export const SortList = observer(
+	({ currentSort, setCurrentSort, setIsListOpen }: SortListProps) => {
+		const { changeSort } = useStore()
 
-	const handleSortChange = (sort: Sorts, id: string) => {
-		setCurrentSort(sort)
-		setIsListOpen(false)
-		rootStore.changeSort(id)
+		const handleSortChange = (label: string, id: string) => {
+			setCurrentSort(label)
+			setIsListOpen(false)
+			changeSort(id)
+		}
+
+		return (
+			<div className={styles.sortListContainer}>
+				{sortOptions.map(({ id, label }) => (
+					<div
+						key={id}
+						className={`${styles.sortItem} ${label === currentSort ? styles.activeSort : ''
+							}`}
+						onClick={() => handleSortChange(label, id)}
+					>
+						{label}
+						{label === currentSort && (
+							<CheckIcon className={styles.checkIcon} />
+						)}
+					</div>
+				))}
+			</div>
+		)
 	}
-
-	return (
-		<div className={styles.sortListContainer}>
-			{sortOptions.map(({ id, text }) => (
-				<div
-					key={id}
-					className={`${styles.sortItem} ${text === currentSort ? styles.activeSort : ""
-						}`}
-					onClick={() => handleSortChange(text, id)}
-				>
-					{text}
-					{text === currentSort && <Check className={styles.checkIcon} />}
-				</div>
-			))}
-		</div>
-	)
-})
+)

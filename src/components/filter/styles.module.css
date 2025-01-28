@@ -8,6 +8,11 @@
 	cursor: pointer;
 	font-size: 14px;
 	font-weight: 600;
+
+	&:hover .filterIcon {
+		animation: filterHover 2s ease-in-out;
+		animation-delay: 0ms;
+	}
 }
 
 .filterContainer {
@@ -59,11 +64,18 @@
 	gap: 10px;
 	cursor: pointer;
 	user-select: none;
+
+	&:hover .typeText {
+		color: var(--DarkBlue);
+		font-weight: 600;
+	}
 }
 
 .typeText {
 	color: var(--DarkGray);
 	font-size: 16px;
+	transition: .1s;
+	font-weight: 400;
 }
 
 .sizeContainer {
@@ -117,4 +129,40 @@
 	padding: 14px 26px;
 	border: 1px solid var(--DarkBlue);
 	cursor: pointer;
+	transition: .2s;
+
+	&:hover {
+		background-color: var(--DarkBlue60);
+	}
+}
+
+.applyButton {
+	border: none;
+	background-color: var(--Blue);
+}
+
+.filterAmount {
+	width: 16px;
+	height: 16px;
+	background-color: var(--Blue);
+	color: var(--DarkBlue);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	font-size: 10px;
+}
+
+.filterIcon {
+	transform-origin: 50% 100%;
+}
+
+@keyframes filterHover {
+	25% {
+		transform: rotate(-10deg);
+	}
+
+	75% {
+		transform: rotate(10deg);
+	}
 }

@@ -109,3 +109,10 @@
 .grass {
 	background-color: var(--Grass);
 }
+
+.pokebalIcon {
+	fill: var(--White16);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}

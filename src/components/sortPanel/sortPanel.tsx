@@ -1,23 +1,20 @@
 'use client'
 
-import Arrow from "/public/icons/arrow.svg"
-
 import { useStore } from '@/models/rootStore'
 import { observer } from 'mobx-react-lite'
 import { useEffect, useRef, useState } from "react"
+import { ArrowIcon } from '../../../public/icons'
 import { SortList } from './sortList'
 import styles from "./styles.module.css"
 
-
-
 export const SortPanel = observer(() => {
-	const [currentSort, setCurrentSort] = useState('Lowest Number First')
-	const [isListOpen, setIsListOpen] = useState(false)
 	const panelRef = useRef<HTMLDivElement>(null)
 	const rootStore = useStore()
+	const [currentSort, setCurrentSort] = useState('Lowest Number First')
+	const [isListOpen, setIsListOpen] = useState(false)
+	const isFirstRender = useRef(true)
 
 	const toggleList = () => setIsListOpen((prev) => !prev)
-
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
@@ -33,14 +30,18 @@ export const SortPanel = observer(() => {
 	}, [])
 
 	useEffect(() => {
-		rootStore.fetchPokemon(1)
+		if (isFirstRender.current) {
+			isFirstRender.current = false
+			return
+		}
+		rootStore.fetchPokemon()
 	}, [currentSort])
 
 	return (
 		<div className={styles.sortContainer} ref={panelRef}>
 			<div className={styles.currentSortContainer} onClick={toggleList}>
 				<span className={styles.currentSortText}>{currentSort}</span>
-				<Arrow
+				<ArrowIcon
 					className={`${styles.sortIcon} ${isListOpen ? styles.openIcon : ""}`}
 				/>
 			</div>

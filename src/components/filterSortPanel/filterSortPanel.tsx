@@ -1,4 +1,4 @@
-import { FilterButton } from '../filter/filterButton'
+import { FilterButton } from '../filter/ui/filterButton'
 import { SortPanel } from '../sortPanel/sortPanel'
 import styles from "./styles.module.css"
 

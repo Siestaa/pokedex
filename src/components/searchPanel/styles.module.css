@@ -59,4 +59,10 @@
 	background-color: var(--Yellow);
 	border-radius: 8px;
 	cursor: pointer;
+	transition: .3s;
+
+	&:hover {
+		background-color: var(--DarkBlue);
+		color: var(--Yellow);
+	}
 }

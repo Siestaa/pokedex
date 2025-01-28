@@ -3,3 +3,7 @@
 	align-items: center;
 	margin-bottom: 40px;
 }
+
+.logoIcon {
+	cursor: pointer;
+}
