@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "commit": "npx -y git-cz"
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",
