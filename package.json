@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "commit": "npx -y git-cz"
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",
@@ -26,5 +27,13 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "typescript": "^5"
+  },
+  "peerDependencies": {
+    "@commitlint/cli": "~17.0.3",
+    "@commitlint/config-angular": "~17.0.3",
+    "@semantic-release/changelog": "~6.0.1",
+    "@semantic-release/git": "~10.0.1",
+    "semantic-release": "~19.0.3",
+    "git-cz": "~4.9.0"
   }
 }
