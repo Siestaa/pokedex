@@ -1,0 +1,7 @@
+{{#if isPatch~}}
+    ##
+    {{~else~}}
+    #
+{{~/if}} [{{version}}]({{host}}/compare?stype=tag&srev={{currentTag}}&&ttype=tag&trev={{previousTag}})
+{{~#if date}} ({{date}})
+{{/if}}
