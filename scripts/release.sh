@@ -1,7 +1,7 @@
 #!bin/sh
 
 git fetch --all
-git checkout master
+git checkout main
 git pull --ff-only origin
 git pull --tags
 VERSION=$(npm pkg get version --workspaces=false | tr -d \")

@@ -25,7 +25,7 @@ done
 echo 'Обновление данных'
 git fetch --all
 echo 'Переключение на develop'
-git checkout master
+git checkout main
 echo 'Обновление кода'
 git pull --ff-only origin
 echo 'Обновление тегов'
