@@ -1,131 +1,131 @@
 .cardContainer {
-	width: 322px;
-	border-radius: 16px;
-	box-shadow: 0 11px 20px 0 rgba(145, 145, 145, 0.16);
-	padding: 24px;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
-	position: relative;
-	transform: rotate3d(0);
-	transition-duration: 300ms;
-	transition-property: transform, box-shadow;
-	transition-timing-function: ease-out;
+  width: 322px;
+  border-radius: 16px;
+  box-shadow: 0 11px 20px 0 rgba(145, 145, 145, 0.16);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  transform: rotate3d(0);
+  transition-duration: 300ms;
+  transition-property: transform, box-shadow;
+  transition-timing-function: ease-out;
 
-	&:hover {
-		box-shadow: 0 5px 20px 5px #00000044;
-	}
+  &:hover {
+    box-shadow: 0 5px 20px 5px #00000044;
+  }
 }
 
 .cardName {
-	font-size: 28px;
-	font-weight: 600;
-	color: var(--White);
-	align-self: flex-start;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--White);
+  align-self: flex-start;
 }
 
 .cardNumber {
-	font-size: 18px;
-	font-weight: 600;
-	color: var(--White80);
-	margin-top: 8px;
-	align-self: flex-start;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--White80);
+  margin-top: 8px;
+  align-self: flex-start;
 }
 
 .typesCardContainer {
-	margin-top: 20px;
-	display: flex;
-	gap: 8px;
-	align-items: center;
+  margin-top: 20px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .fire {
-	background-color: var(--Fire);
+  background-color: var(--Fire);
 }
 
 .bug {
-	background-color: var(--Bug);
+  background-color: var(--Bug);
 }
 
 .water {
-	background-color: var(--Water);
+  background-color: var(--Water);
 }
 
 .flying {
-	background: var(--Flying);
+  background: var(--Flying);
 }
 
 .poison {
-	background-color: var(--Poison);
+  background-color: var(--Poison);
 }
 
 .normal {
-	background-color: var(--Normal);
+  background-color: var(--Normal);
 }
 
 .rock {
-	background-color: var(--Rock);
+  background-color: var(--Rock);
 }
 
 .ground {
-	background-color: var(--Ground);
+  background-color: var(--Ground);
 }
 
 .fighting {
-	background-color: var(--Fighting);
+  background-color: var(--Fighting);
 }
 
 .ghost {
-	background-color: var(--Ghost);
+  background-color: var(--Ghost);
 }
 
 .psychic {
-	background-color: var(--Psychic);
+  background-color: var(--Psychic);
 }
 
 .ice {
-	background-color: var(--Ice);
+  background-color: var(--Ice);
 }
 
 .dragon {
-	background-color: var(--Dragon);
+  background-color: var(--Dragon);
 }
 
 .dark {
-	background-color: var(--Dark);
+  background-color: var(--Dark);
 }
 
 .fairy {
-	background-color: var(--Fairy);
+  background-color: var(--Fairy);
 }
 
 .electric {
-	background-color: var(--Electric);
+  background-color: var(--Electric);
 }
 
 .steel {
-	background-color: var(--Steel);
+  background-color: var(--Steel);
 }
 
 .grass {
-	background-color: var(--Grass);
+  background-color: var(--Grass);
 }
 
 .pokebalIcon {
-	fill: var(--White16);
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	border-radius: 16px;
+  fill: var(--White16);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-radius: 16px;
 }
 
 .glow {
-	z-index: 1;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	left: 0;
-	top: 0;
-	border-radius: 16px;
+  z-index: 3;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 16px;
 }

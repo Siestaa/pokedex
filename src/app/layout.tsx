@@ -16,15 +16,15 @@ export const metadata: Metadata = {
   title: "Pokedex",
   description: "Find your pokemon!",
   icons: {
-    icon: '/favicon.ico', 
+    icon: '/favicon.ico',
   },
 }
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode
-}>) {
+}>) => {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
@@ -33,3 +33,5 @@ export default function RootLayout({
     </html>
   )
 }
+
+export default RootLayout

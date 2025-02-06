@@ -2,13 +2,13 @@
 
 import { FilterPanel } from '@/components/filter/filterPanel'
 import { FilterSortPanel } from '@/components/filterSortPanel/filterSortPanel'
+import { Header } from '@/components/header/header'
+import { PokemonList } from '@/components/pokemonList/pokemonList'
+import { SearchPanel } from '@/components/searchPanel/searchPanel'
 import { useStore } from '@/models/rootStore'
 import { observer } from 'mobx-react-lite'
 import { Roboto } from 'next/font/google'
-import { Header } from '../components/header/header'
-import { PokemonList } from '../components/pokemonList/pokemonList'
-import { SearchPanel } from '../components/searchPanel/searchPanel'
-import "./page.module.css"
+import Link from 'next/link'
 
 const roboto = Roboto({
   weight: '400',
@@ -23,6 +23,8 @@ const Home = observer(() => {
       <Header />
       <SearchPanel />
       <FilterSortPanel />
+      <Link href="/pikachu">Open Pikachu</Link>
+      <Link href="/bulbasaur">Open Bulbasaur</Link>
       {rootStore.showFilter && <FilterPanel />}
       <PokemonList />
       {rootStore.showFilter && <div className='filterBlur' />}

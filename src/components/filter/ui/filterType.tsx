@@ -8,24 +8,23 @@ import styles from '../styles.module.css'
 import { PokemonType } from './filterTypes'
 
 interface FilterTypeProps {
-	text: PokemonType
+  text: PokemonType
 }
 
 export const FilterType = observer(({ text }: FilterTypeProps) => {
-	const { filters, changeCustomFilters } = useStore()
+  const { filters, changeCustomFilters } = useStore()
 
-	const [isActive, setIsActive] = useState(filters.types.includes(text))
+  const [isActive, setIsActive] = useState(filters.types.includes(text))
 
-	const toggleFilter = () => {
-		setIsActive((prev) => !prev)
+  const toggleFilter = () => {
+    setIsActive((prev) => !prev)
+    changeCustomFilters(text)
+  }
 
-		changeCustomFilters(text)
-	}
-
-	return (
-		<div className={styles.typeContainer} onClick={toggleFilter}>
-			{isActive ? <CheckBoxIcon /> : <EmptyCheckBoxIcon />}
-			<span className={styles.typeText}>{text}</span>
-		</div>
-	)
+  return (
+    <div className={styles.typeContainer} onClick={toggleFilter}>
+      {isActive ? <CheckBoxIcon /> : <EmptyCheckBoxIcon />}
+      <span className={styles.typeText}>{text}</span>
+    </div>
+  )
 })
