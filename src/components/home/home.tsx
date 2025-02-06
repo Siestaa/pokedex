@@ -19,7 +19,7 @@ const Home = observer(() => {
   const rootStore = useStore()
 
   return (
-    <main className={`${roboto.className} ${rootStore.showFilter ? 'showFilter' : ''}`}>
+    <div className={`${roboto.className} ${rootStore.showFilter ? 'showFilter' : ''}`}>
       <Header />
       <SearchPanel />
       <FilterSortPanel />
@@ -28,7 +28,7 @@ const Home = observer(() => {
       {rootStore.showFilter && <FilterPanel />}
       <PokemonList />
       {rootStore.showFilter && <div className='filterBlur' />}
-    </main>
+    </div>
   )
 })
 

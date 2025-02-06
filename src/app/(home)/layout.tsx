@@ -1,4 +1,4 @@
-import Home from '../../components/home'
+import Home from '../../components/home/home'
 
 const HomeLayout = ({
   children,
@@ -6,10 +6,10 @@ const HomeLayout = ({
   children: React.ReactNode
 }>) => {
   return (
-    <div>
+    <main>
       <Home />
       {children}
-    </div>
+    </main>
   )
 }
 
