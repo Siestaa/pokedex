@@ -1,89 +1,89 @@
 .typeContainer {
-	display: flex;
-	padding: 8px 12px;
-	border-radius: 999px;
-	gap: 5px;
-	align-items: center;
-	z-index: 2;
+  display: flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  gap: 5px;
+  align-items: center;
+  z-index: 2;
 }
 
 .typeText {
-	font-size: 16px;
-	color: var(--DarkGray);
+  font-size: 16px;
+  color: var(--DarkGray);
 
-	&::first-letter {
-		text-transform: capitalize;
-	}
+  &::first-letter {
+    text-transform: capitalize;
+  }
 }
 
 .fire {
-	background-color: var(--FireTag);
+  background: var(--FireTag);
 }
 
 .bug {
-	background-color: var(--BugTag);
+  background: var(--BugTag);
 }
 
 .water {
-	background-color: var(--WaterTag);
+  background: var(--WaterTag);
 }
 
 .flying {
-	background: var(--FlyingTag);
+  background: var(--FlyingTag);
 }
 
 .poison {
-	background-color: var(--PoisonTag);
+  background: var(--PoisonTag);
 }
 
 .normal {
-	background-color: var(--NormalTag);
+  background: var(--NormalTag);
 }
 
 .rock {
-	background-color: var(--RockTag);
+  background: var(--RockTag);
 }
 
 .ground {
-	background-color: var(--GroundTag);
+  background: var(--GroundTag);
 }
 
 .fighting {
-	background-color: var(--FightingTag);
+  background: var(--FightingTag);
 }
 
 .ghost {
-	background-color: var(--GhostTag);
+  background: var(--GhostTag);
 }
 
 .psychic {
-	background-color: var(--PsychicTag);
+  background: var(--PsychicTag);
 }
 
 .ice {
-	background-color: var(--IceTag);
+  background: var(--IceTag);
 }
 
 .dragon {
-	background-color: var(--DragonTag);
+  background: var(--DragonTag);
 }
 
 .dark {
-	background-color: var(--DarkTag);
+  background: var(--DarkTag);
 }
 
 .fairy {
-	background-color: var(--FairyTag);
+  background: var(--FairyTag);
 }
 
 .electric {
-	background-color: var(--ElectricTag);
+  background: var(--ElectricTag);
 }
 
 .steel {
-	background-color: var(--SteelTag);
+  background: var(--SteelTag);
 }
 
 .grass {
-	background-color: var(--GrassTag);
+  background: var(--GrassTag);
 }

@@ -7,19 +7,16 @@ import { PokemonList } from '@/components/pokemonList/pokemonList'
 import { SearchPanel } from '@/components/searchPanel/searchPanel'
 import { useStore } from '@/models/rootStore'
 import { observer } from 'mobx-react-lite'
-import { Roboto } from 'next/font/google'
+
 import Link from 'next/link'
 
-const roboto = Roboto({
-  weight: '400',
-  subsets: ['latin'],
-})
+
 
 const Home = observer(() => {
   const rootStore = useStore()
 
   return (
-    <div className={`${roboto.className} ${rootStore.showFilter ? 'showFilter' : ''}`}>
+    <div className={`${rootStore.showFilter ? 'showFilter' : ''}`}>
       <Header />
       <SearchPanel />
       <FilterSortPanel />

@@ -41,15 +41,15 @@
 }
 
 .fire {
-  background-color: var(--Fire);
+  background: var(--Fire);
 }
 
 .bug {
-  background-color: var(--Bug);
+  background: var(--Bug);
 }
 
 .water {
-  background-color: var(--Water);
+  background: var(--Water);
 }
 
 .flying {
@@ -57,59 +57,59 @@
 }
 
 .poison {
-  background-color: var(--Poison);
+  background: var(--Poison);
 }
 
 .normal {
-  background-color: var(--Normal);
+  background: var(--Normal);
 }
 
 .rock {
-  background-color: var(--Rock);
+  background: var(--Rock);
 }
 
 .ground {
-  background-color: var(--Ground);
+  background: var(--Ground);
 }
 
 .fighting {
-  background-color: var(--Fighting);
+  background: var(--Fighting);
 }
 
 .ghost {
-  background-color: var(--Ghost);
+  background: var(--Ghost);
 }
 
 .psychic {
-  background-color: var(--Psychic);
+  background: var(--Psychic);
 }
 
 .ice {
-  background-color: var(--Ice);
+  background: var(--Ice);
 }
 
 .dragon {
-  background-color: var(--Dragon);
+  background: var(--Dragon);
 }
 
 .dark {
-  background-color: var(--Dark);
+  background: var(--Dark);
 }
 
 .fairy {
-  background-color: var(--Fairy);
+  background: var(--Fairy);
 }
 
 .electric {
-  background-color: var(--Electric);
+  background: var(--Electric);
 }
 
 .steel {
-  background-color: var(--Steel);
+  background: var(--Steel);
 }
 
 .grass {
-  background-color: var(--Grass);
+  background: var(--Grass);
 }
 
 .pokebalIcon {

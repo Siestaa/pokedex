@@ -1,4 +1,10 @@
+import { Roboto } from 'next/font/google'
 import Home from '../../components/home/home'
+
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
+})
 
 const HomeLayout = ({
   children,
@@ -6,7 +12,7 @@ const HomeLayout = ({
   children: React.ReactNode
 }>) => {
   return (
-    <main>
+    <main className={roboto.className}>
       <Home />
       {children}
     </main>

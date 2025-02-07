@@ -11,6 +11,20 @@ export const RootStore = t
     totalItems: t.optional(t.number, 1025),
     showFilter: t.optional(t.boolean, false),
     filters: PokemonFiltersModel,
+    currentPokemon: t.optional(PokemonModel, {
+      id: 0,
+      name: "",
+      slug: "",
+      featured: "",
+      collectibles_slug: "",
+      detailPageURL: "",
+      ThumbnailImage: "",
+      ThumbnailAltText: "",
+      number: "",
+      height: 0,
+      weight: 0,
+      type: [],
+    }),
   })
   .actions((store) => {
     const fetchPokemon = flow(function* (page = 1) {
@@ -76,6 +90,23 @@ export const RootStore = t
       store.filters.text = text;
     };
 
+    const fetchCurrentPokemon = flow(function* (pokemon) {
+      try {
+        store.filters.text = pokemon;
+        const response = yield axios.get("/pokemons", {
+          params: {
+            page: 1,
+            limit: store.itemsPerPage,
+            filters: JSON.stringify(store.filters),
+          },
+        });
+
+        store.currentPokemon = response.data.pokemons[0];
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    });
+
     return {
       fetchPokemon,
       changeSort,
@@ -85,6 +116,7 @@ export const RootStore = t
       resetFilter,
       changeTotalItems,
       searchByText,
+      fetchCurrentPokemon,
     };
   });
 
@@ -103,6 +135,20 @@ export function useStore() {
         weight: [],
         text: "",
         sort: "MinId",
+      },
+      currentPokemon: {
+        id: 0,
+        name: "Pokemon",
+        slug: "",
+        featured: "",
+        collectibles_slug: "",
+        detailPageURL: "",
+        ThumbnailImage: "",
+        ThumbnailAltText: "",
+        number: "0000",
+        height: 0,
+        weight: 0,
+        type: ["bug"],
       },
     });
   }

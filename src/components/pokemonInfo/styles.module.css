@@ -1,74 +1,222 @@
-.infoContainer {}
+.infoContainer {
+  width: 725px;
+  height: auto;
+  display: flex;
+  justify-content: stretch;
+  font-family: inherit;
+  flex-direction: column;
+}
 
+.infoHeader {
+  padding: 30px 40px;
+  width: 100%;
+  border-radius: 16px;
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
+.mainInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+}
+
+.iconBack {
+  fill: var(--White);
+  cursor: pointer;
+  transition: .2s;
+  margin-right: 64px;
+
+  &:hover {
+    fill: var(--White80);
+  }
+}
+
+.pokemonImage {
+  margin-top: 22px;
+  z-index: 2;
+}
+
+.typesCardContainer {
+  margin-top: 18px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pokemonId {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--White80);
+  margin-top: 8px;
+  align-self: flex-start;
+}
+
+.pokemonName {
+  margin-top: 8px;
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--White);
+  align-self: flex-start;
+}
+
+.pokemonNameBack {
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 88px;
+  letter-spacing: 8px;
+  font-weight: 800;
+  line-height: 88px;
+  user-select: none;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
 
 .fire {
-  background-color: var(--Fire);
+  background: var(--Fire);
+}
+
+.fire .pokemonNameBack {
+  color: var(--Fire);
 }
 
 .bug {
-  background-color: var(--Bug);
+  background: var(--Bug);
+}
+
+.bug .pokemonNameBack {
+  color: var(--Bug);
 }
 
 .water {
-  background-color: var(--Water);
+  background: var(--Water);
+}
+
+.water .pokemonNameBack {
+  color: var(--Water);
 }
 
 .flying {
   background: var(--Flying);
 }
 
+.flying .pokemonNameBack {
+  color: var(--Flying);
+}
+
 .poison {
-  background-color: var(--Poison);
+  background: var(--Poison);
+}
+
+.poison .pokemonNameBack {
+  color: var(--Poison);
 }
 
 .normal {
-  background-color: var(--Normal);
+  background: var(--Normal);
+}
+
+.normal .pokemonNameBack {
+  color: var(--Normal);
 }
 
 .rock {
-  background-color: var(--Rock);
+  background: var(--Rock);
+}
+
+.rock .pokemonNameBack {
+  color: var(--Rock);
 }
 
 .ground {
-  background-color: var(--Ground);
+  background: var(--Ground);
+}
+
+.ground .pokemonNameBack {
+  color: var(--Ground);
 }
 
 .fighting {
-  background-color: var(--Fighting);
+  background: var(--Fighting);
+}
+
+.fighting .pokemonNameBack {
+  color: var(--Fighting);
 }
 
 .ghost {
-  background-color: var(--Ghost);
+  background: var(--Ghost);
+}
+
+.ghost .pokemonNameBack {
+  color: var(--Ghost);
 }
 
 .psychic {
-  background-color: var(--Psychic);
+  background: var(--Psychic);
+}
+
+.psychic .pokemonNameBack {
+  color: var(--Psychic);
 }
 
 .ice {
-  background-color: var(--Ice);
+  background: var(--Ice);
+}
+
+.ice .pokemonNameBack {
+  color: var(--Ice);
 }
 
 .dragon {
-  background-color: var(--Dragon);
+  background: var(--Dragon);
+}
+
+.dragon .pokemonNameBack {
+  color: var(--Dragon);
 }
 
 .dark {
-  background-color: var(--Dark);
+  background: var(--Dark);
+}
+
+.dark .pokemonNameBack {
+  color: var(--Dark);
 }
 
 .fairy {
-  background-color: var(--Fairy);
+  background: var(--Fairy);
+}
+
+.fairy .pokemonNameBack {
+  color: var(--Fairy);
 }
 
 .electric {
-  background-color: var(--Electric);
+  background: var(--Electric);
+}
+
+.electric .pokemonNameBack {
+  color: var(--Electric);
 }
 
 .steel {
-  background-color: var(--Steel);
+  background: var(--Steel);
+}
+
+.steel .pokemonNameBack {
+  color: var(--Steel);
 }
 
 .grass {
-  background-color: var(--Grass);
+  background: var(--Grass);
+}
+
+.grass .pokemonNameBack {
+  color: var(--Grass);
 }

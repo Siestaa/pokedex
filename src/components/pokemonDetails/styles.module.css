@@ -1,0 +1,36 @@
+.infoContainer {
+  width: 100%;
+  transform: translateY(-30px);
+  background-color: var(--White);
+  border-radius: 16px;
+  box-shadow: 0 11px 20px 0 var(--White16);
+}
+
+.infoTabs {
+  display: flex;
+  gap: 24px;
+  padding: 24px 30px 0;
+}
+
+.infoTab {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--DarkGray60);
+  cursor: pointer;
+  padding-bottom: 10px;
+
+  &:hover {
+    color: var(--DarkGray80);
+    border-bottom: 5px solid var(--DarkBlue60);
+  }
+}
+
+.isActive {
+  color: var(--DarkGray);
+  border-bottom: 5px solid var(--DarkBlue);
+
+  &:hover {
+    color: var(--DarkGray);
+    border-bottom: 5px solid var(--DarkBlue);
+  }
+}
