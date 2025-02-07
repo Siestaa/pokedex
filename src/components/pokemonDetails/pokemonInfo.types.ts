@@ -147,3 +147,131 @@ export interface Item {
   name: string;
   url: string;
 }
+
+export const defaultPokemon: Pokemon = {
+  id: 1,
+  name: "default-pokemon",
+  base_experience: 0,
+  height: 0,
+  is_default: true,
+  order: 0,
+  weight: 0,
+  abilities: [
+    {
+      is_hidden: false,
+      slot: 1,
+      ability: {
+        name: "default-ability",
+        url: "https://pokeapi.co/api/v2/ability/default-ability/",
+      },
+    },
+  ],
+  forms: [
+    {
+      name: "default-form",
+      url: "https://pokeapi.co/api/v2/pokemon-form/default-form/",
+    },
+  ],
+  game_indices: [
+    {
+      game_index: 0,
+      version: {
+        name: "default-version",
+        url: "https://pokeapi.co/api/v2/version/default-version/",
+      },
+    },
+  ],
+  held_items: [
+    {
+      item: {
+        name: "default-item",
+        url: "https://pokeapi.co/api/v2/item/default-item/",
+      },
+      version_details: [
+        {
+          version: {
+            name: "default-version",
+            url: "https://pokeapi.co/api/v2/version/default-version/",
+          },
+          rarity: 0,
+        },
+      ],
+    },
+  ],
+  location_area_encounters: "https://pokeapi.co/api/v2/pokemon/1/encounters",
+  moves: [
+    {
+      move: {
+        name: "default-move",
+        url: "https://pokeapi.co/api/v2/move/default-move/",
+      },
+      version_group_details: [
+        {
+          move_learn_method: {
+            name: "default-method",
+            url: "https://pokeapi.co/api/v2/move-learn-method/default-method/",
+          },
+          version_group: {
+            name: "default-group",
+            url: "https://pokeapi.co/api/v2/version-group/default-group/",
+          },
+          level_learned_at: 0,
+        },
+      ],
+    },
+  ],
+  past_types: [
+    {
+      generation: {
+        name: "default-generation",
+        url: "https://pokeapi.co/api/v2/generation/default-generation/",
+      },
+      types: [
+        {
+          slot: 1,
+          type: {
+            name: "default-type",
+            url: "https://pokeapi.co/api/v2/type/default-type/",
+          },
+        },
+      ],
+    },
+  ],
+  sprites: {
+    front_default: null,
+    front_shiny: null,
+    front_female: null,
+    front_shiny_female: null,
+    back_default: null,
+    back_shiny: null,
+    back_female: null,
+    back_shiny_female: null,
+  },
+  cries: {
+    latest: "https://pokeapi.co/media/cry/1/latest.mp3",
+    legacy: "https://pokeapi.co/media/cry/1/legacy.mp3",
+  },
+  species: {
+    name: "default-species",
+    url: "https://pokeapi.co/api/v2/pokemon-species/default-species/",
+  },
+  stats: [
+    {
+      stat: {
+        name: "default-stat",
+        url: "https://pokeapi.co/api/v2/stat/default-stat/",
+      },
+      effort: 0,
+      base_stat: 0,
+    },
+  ],
+  types: [
+    {
+      slot: 1,
+      type: {
+        name: "default-type",
+        url: "https://pokeapi.co/api/v2/type/default-type/",
+      },
+    },
+  ],
+};

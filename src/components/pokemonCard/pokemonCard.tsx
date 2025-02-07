@@ -48,13 +48,13 @@ export const PokemonCard = ({ name, number, img, types, alt }: PokemonCardProps)
         <div ref={glow} className={styles.glow} />
         <h2 className={styles.cardName}>{name}</h2>
         <p className={styles.cardNumber}>#{number}</p>
-        <Image className={styles.cardImage} src={img} width={180} height={180} alt={alt} />
+        <Image className={styles.cardImage} src={img} width={180} height={180} alt={alt} priority={true} />
         <div className={`${styles.typesCardContainer}`}>
           {types.map((type) =>
             <PokemonType key={type} pokemonType={type} />
           )}
         </div>
-        <PokeballIcon className={styles.pokebalIcon} />
+        <PokeballIcon className={styles.pokeballIcon} />
       </div>
     </Link>
   )

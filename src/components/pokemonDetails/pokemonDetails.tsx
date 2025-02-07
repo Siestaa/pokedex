@@ -2,26 +2,25 @@
 
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { PokemonAbout } from './pokemonAbout'
+import { defaultPokemon, Pokemon } from './pokemonInfo.types'
 import styles from "./styles.module.css"
 
 interface PokemonDetailsProps {
   pokemonName: string
 }
 
-interface PokemonInfoType {
-  name: string
-  weight: number
-  height: number
-  types: string[]
-  abilities: string[]
-  detailPageURL: string
+enum ITabs {
+  about = 'about',
+  stats = 'stats',
+  evol = 'evol'
 }
 
 export const PokemonDetails = ({ pokemonName }: PokemonDetailsProps) => {
   const [currentTab, setCurrentTab] = useState('about')
   const [isLoading, setIsLoading] = useState(false)
-  const [pokemonInfo, setPokemonInfo] = useState<PokemonInfoType | null>(null)
-  const [error, setError] = useState<string | null>(null)
+  const [pokemonInfo, setPokemonInfo] = useState<Pokemon>(defaultPokemon)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     const controller = new AbortController()
@@ -54,9 +53,23 @@ export const PokemonDetails = ({ pokemonName }: PokemonDetailsProps) => {
   return (
     <div className={styles.infoContainer}>
       <div className={styles.infoTabs}>
-        <div className={`${styles.infoTab} ${currentTab === 'about' ? styles.isActive : null}`} onClick={() => setCurrentTab('about')}>About</div>
-        <div className={`${styles.infoTab} ${currentTab === 'stats' ? styles.isActive : null}`} onClick={() => setCurrentTab('stats')}>Base stats</div>
-        <div className={`${styles.infoTab} ${currentTab === 'evol' ? styles.isActive : null}`} onClick={() => setCurrentTab('evol')}>Evolution</div>
+        {Object.values(ITabs).map((tab) => (
+          <div
+            key={tab}
+            className={`${styles.infoTab} ${currentTab === tab ? styles.isActive : ''}`}
+            onClick={() => setCurrentTab(tab)}
+          >
+            {tab.charAt(0).toUpperCase() + tab.slice(1)}
+          </div>
+        ))}
+      </div>
+      <div className={styles.currentInfo}>
+        {currentTab === ITabs.about ?
+          <PokemonAbout pokemonInfo={pokemonInfo} />
+          : currentTab === ITabs.stats ?
+            <div>Stats</div>
+            : <div>Evolv</div>
+        }
       </div>
     </div>
   )

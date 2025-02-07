@@ -112,7 +112,7 @@
   background: var(--Grass);
 }
 
-.pokebalIcon {
+.pokeballIcon {
   fill: var(--White16);
   position: absolute;
   left: 0;
