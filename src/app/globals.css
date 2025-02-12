@@ -82,4 +82,5 @@ main {
   top: 0;
   left: 0;
   background-color: var(--DarkGray16);
+  z-index: 99;
 }

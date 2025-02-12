@@ -13,9 +13,10 @@ interface PokemonCardProps {
   img: string
   types: Array<'bug' | 'dark' | 'dragon' | 'electric' | 'fairy' | 'fighting' | 'fire' | 'flying' | 'ghost' | 'grass' | 'ground' | 'ice' | 'normal' | 'poison' | 'psychic' | 'rock' | 'steel' | 'water'>,
   alt: string
+  slug: string
 }
 
-export const PokemonCard = ({ name, number, img, types, alt }: PokemonCardProps) => {
+export const PokemonCard = ({ name, number, img, types, alt, slug }: PokemonCardProps) => {
   const card = useRef<HTMLDivElement>(null)
   const glow = useRef<HTMLDivElement>(null)
 
@@ -40,7 +41,7 @@ export const PokemonCard = ({ name, number, img, types, alt }: PokemonCardProps)
 
 
   return (
-    <Link href={`/${name}`}>
+    <Link href={`/${slug}`}>
       <div className={`${styles.cardContainer}  ${styles[types[0]]}`}
         ref={card}
         onMouseEnter={moveCard}

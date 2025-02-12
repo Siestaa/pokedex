@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 const PokemonDetails = observer(() => {
   const rootStore = useStore()
   useEffect(() => {
-    rootStore.resetFilter()
+    rootStore.resetFilterText()
   }, [])
   return (
     <></>

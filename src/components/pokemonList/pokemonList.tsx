@@ -9,77 +9,78 @@ import { Skeleton } from '../skeleton/skeleton'
 import styles from "./styles.module.css"
 
 export const PokemonList = observer(() => {
-	const rootStore = useStore()
-	const [isFetching, setIsFetching] = useState(true)
-	const observerRef = useRef<IntersectionObserver | null>(null)
-	const lastElementRef = useRef<HTMLDivElement | null>(null)
-	const [triggerFetchPokemon, setTriggerFetchPokemon] = useState('')
-	const fetchedElement = 8
+  const rootStore = useStore()
+  const [isFetching, setIsFetching] = useState(true)
+  const observerRef = useRef<IntersectionObserver | null>(null)
+  const lastElementRef = useRef<HTMLDivElement | null>(null)
+  const [triggerFetchPokemon, setTriggerFetchPokemon] = useState('')
+  const fetchedElement = 8
 
-	useEffect(() => {
-		rootStore
-			.fetchPokemon(rootStore.currentPage + 1)
-			.finally(() => setIsFetching(false))
-	}, [])
+  useEffect(() => {
+    rootStore
+      .fetchPokemon(rootStore.currentPage + 1)
+      .finally(() => setIsFetching(false))
+  }, [])
 
 
-	useEffect(() => {
-		const handleIntersect: IntersectionObserverCallback = (entries) => {
-			const target = entries[0]
-			if (
-				target.isIntersecting &&
-				!isFetching &&
-				rootStore.currentPage * rootStore.itemsPerPage < rootStore.totalItems
-			) {
-				setIsFetching(true)
-				rootStore
-					.fetchPokemon(rootStore.currentPage + 1)
-					.finally(() => setIsFetching(false))
-			}
-		}
+  useEffect(() => {
+    const handleIntersect: IntersectionObserverCallback = (entries) => {
+      const target = entries[0]
+      if (
+        target.isIntersecting &&
+        !isFetching &&
+        rootStore.currentPage * rootStore.itemsPerPage < rootStore.totalItems
+      ) {
+        setIsFetching(true)
+        rootStore
+          .fetchPokemon(rootStore.currentPage + 1)
+          .finally(() => setIsFetching(false))
+      }
+    }
 
-		observerRef.current = new IntersectionObserver(handleIntersect, {
-			root: null,
-			rootMargin: "0px",
-			threshold: 1.0,
-		})
+    observerRef.current = new IntersectionObserver(handleIntersect, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 1.0,
+    })
 
-		const observer = observerRef.current
-		if (lastElementRef.current) {
-			observer.observe(lastElementRef.current)
-		}
+    const observer = observerRef.current
+    if (lastElementRef.current) {
+      observer.observe(lastElementRef.current)
+    }
 
-		return () => {
-			observer.disconnect()
-		}
-	}, [rootStore.pokemon.length, triggerFetchPokemon, isFetching])
+    return () => {
+      observer.disconnect()
+    }
+  }, [rootStore.pokemon.length, triggerFetchPokemon, isFetching])
 
-	useEffect(() => {
-		setTriggerFetchPokemon(rootStore?.pokemon[rootStore.pokemon.length - fetchedElement]?.name)
-	}, [rootStore.pokemon[rootStore.pokemon.length - fetchedElement]])
+  useEffect(() => {
+    setTriggerFetchPokemon(rootStore?.pokemon[rootStore.pokemon.length - fetchedElement]?.name)
+  }, [rootStore.pokemon[rootStore.pokemon.length - fetchedElement]])
 
-	return (
-		<div className={styles.listContainer}>
-			{rootStore.pokemon.map((poke) => {
-				return (
-					<div
-						key={poke.id}
-						ref={triggerFetchPokemon === poke.name ? lastElementRef : null}
-					>
-						<PokemonCard
-							name={poke.name}
-							number={poke.number}
-							img={poke.ThumbnailImage}
-							types={poke.type}
-							alt={poke.ThumbnailAltText}
-						/>
-					</div>
-				)
-			})}
-			{(isFetching) ? (Array.from({ length: 18 }).map((_, index) => (
-				<Skeleton key={index} />
-			))) : rootStore.pokemon.length === 0 && <EmptyPokemonList />}
+  return (
+    <div className={styles.listContainer}>
+      {rootStore.pokemon.map((poke) => {
+        return (
+          <div
+            key={poke.id}
+            ref={triggerFetchPokemon === poke.name ? lastElementRef : null}
+          >
+            <PokemonCard
+              name={poke.name}
+              number={poke.number}
+              img={poke.ThumbnailImage}
+              types={poke.type}
+              alt={poke.ThumbnailAltText}
+              slug={poke.slug}
+            />
+          </div>
+        )
+      })}
+      {(isFetching) ? (Array.from({ length: 18 }).map((_, index) => (
+        <Skeleton key={index} />
+      ))) : rootStore.pokemon.length === 0 && <EmptyPokemonList />}
 
-		</div>
-	)
+    </div>
+  )
 })

@@ -82,6 +82,10 @@ export const RootStore = t
       store.filters.sort = "MinId";
     };
 
+    const resetFilterText = () => {
+      store.filters.text = "";
+    };
+
     const changeTotalItems = (value: number) => {
       store.totalItems = value;
     };
@@ -117,6 +121,7 @@ export const RootStore = t
       changeTotalItems,
       searchByText,
       fetchCurrentPokemon,
+      resetFilterText,
     };
   });
 

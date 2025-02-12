@@ -50,4 +50,29 @@
 .aboutStatsContainer {
   display: grid;
   grid-template-columns: 93px auto;
+  align-items: center;
+}
+
+.statsContainer {
+  display: grid;
+  grid-template-columns: 130px 30px 1fr;
+  gap: 0 24px;
+  align-items: center;
+}
+
+.statsLine {
+  display: block;
+  width: 100%;
+  background-color: var(--DarkGray24);
+  border-radius: 8px;
+  height: 6px;
+}
+
+.statsLine::after {
+  display: block;
+  width: var(--statWidth);
+  background-color: red;
+  height: 6px;
+  border-radius: 8px;
+  content: '';
 }

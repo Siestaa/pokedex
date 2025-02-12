@@ -275,3 +275,10 @@ export const defaultPokemon: Pokemon = {
     },
   ],
 };
+
+export interface IEvolution {
+  name: string;
+  lvl: string;
+  isLast: boolean;
+  nestLevel: number;
+}

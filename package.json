@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "commit": "node scripts\feature.sh && npx -y git-cz"
+    "commit": "node scripts\\feature.sh && npx -y git-cz"
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",

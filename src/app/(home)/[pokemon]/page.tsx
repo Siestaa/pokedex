@@ -2,9 +2,7 @@
 
 import { Modal } from "@/components/modal/modal"
 import { PokemonInfo } from '@/components/pokemonInfo/pokemonInfo'
-import axios from 'axios'
 import { useParams } from "next/navigation"
-import { useEffect, useState } from 'react'
 
 
 
@@ -15,7 +13,6 @@ const PokemonDetails = () => {
   return (
     <Modal>
       <PokemonInfo pokemonName={pokemonName} />
-      
     </Modal>
   )
 }
