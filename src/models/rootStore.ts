@@ -5,7 +5,7 @@ import { PokemonFiltersModel, PokemonModel } from "./pokemonModel";
 
 export const RootStore = t
   .model("RootStore", {
-    pokemon: t.array(PokemonModel),
+    pokemonsList: t.array(PokemonModel),
     currentPage: t.optional(t.number, 0),
     itemsPerPage: t.optional(t.number, 50),
     totalItems: t.optional(t.number, 1025),
@@ -18,7 +18,7 @@ export const RootStore = t
       featured: "",
       collectibles_slug: "",
       detailPageURL: "",
-      ThumbnailImage: "",
+      ThumbnailImage: "/pokeballInfo.png",
       ThumbnailAltText: "",
       number: "",
       height: 0,
@@ -38,9 +38,9 @@ export const RootStore = t
         });
 
         if (page === 1) {
-          store.pokemon.replace(response.data.pokemons);
+          store.pokemonsList.replace(response.data.pokemons);
         } else {
-          store.pokemon.push(...response.data.pokemons);
+          store.pokemonsList.push(...response.data.pokemons);
         }
 
         store.currentPage = page;
@@ -94,22 +94,15 @@ export const RootStore = t
       store.filters.text = text;
     };
 
-    const fetchCurrentPokemon = flow(function* (pokemon) {
-      try {
-        store.filters.text = pokemon;
-        const response = yield axios.get("/pokemons", {
-          params: {
-            page: 1,
-            limit: store.itemsPerPage,
-            filters: JSON.stringify(store.filters),
-          },
-        });
-
-        store.currentPokemon = response.data.pokemons[0];
-      } catch (error) {
-        console.error("Error fetching data:", error);
+    const fetchCurrentPokemon = (pokemon: string) => {
+      const foundPokemon = store.pokemonsList.find(
+        (pokemonItem) =>
+          pokemon.toLowerCase() === pokemonItem.name.toLowerCase()
+      );
+      if (foundPokemon) {
+        store.currentPokemon = JSON.parse(JSON.stringify(foundPokemon));
       }
-    });
+    };
 
     return {
       fetchPokemon,
@@ -132,7 +125,7 @@ let rootStore: RootStoreType;
 export function useStore() {
   if (!rootStore) {
     rootStore = RootStore.create({
-      pokemon: [],
+      pokemonsList: [],
       showFilter: false,
       filters: {
         types: [],
@@ -148,7 +141,7 @@ export function useStore() {
         featured: "",
         collectibles_slug: "",
         detailPageURL: "",
-        ThumbnailImage: "",
+        ThumbnailImage: "/pokeballInfo.png",
         ThumbnailAltText: "",
         number: "0000",
         height: 0,

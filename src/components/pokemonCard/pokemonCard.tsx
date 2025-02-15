@@ -20,8 +20,6 @@ export const PokemonCard = ({ name, number, img, types, alt, slug }: PokemonCard
   const card = useRef<HTMLDivElement>(null)
   const glow = useRef<HTMLDivElement>(null)
 
-
-
   const getCoordinate = (e: MouseEvent) => {
     const bounds = card.current?.getBoundingClientRect()
     if (bounds) {
@@ -30,12 +28,15 @@ export const PokemonCard = ({ name, number, img, types, alt, slug }: PokemonCard
   }
 
   const moveCard = () => {
-    document.addEventListener('mousemove', getCoordinate)
+    if (card.current) card.current.addEventListener('mousemove', getCoordinate)
+    if (card.current) console.log(card.current.style.transform)
   }
 
   const leaveCard = () => {
-    document.removeEventListener('mousemove', getCoordinate)
-    if (card.current) card.current.style.transform = ''
+    if (card.current) {
+      card.current.removeEventListener('mousemove', getCoordinate)
+      card.current.style.transform = ''
+    }
     if (glow.current) glow.current.style.backgroundImage = ''
   }
 

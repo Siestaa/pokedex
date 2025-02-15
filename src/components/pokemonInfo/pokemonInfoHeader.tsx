@@ -36,7 +36,7 @@ export const PokemonInfoHeader = () => {
     slug: "",
     name: "Unknown",
     ThumbnailAltText: "Pokemon",
-    ThumbnailImage: "/default-pokemon.png",
+    ThumbnailImage: "/pokeballInfo.png",
     id: 0,
     type: ['bug'],
   })

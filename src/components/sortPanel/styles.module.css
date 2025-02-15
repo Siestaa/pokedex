@@ -1,87 +1,88 @@
 .sortContainer {
-	position: relative;
-	margin-top: 40px;
-	width: auto;
+  position: relative;
+  margin-top: 40px;
+  width: auto;
 }
 
 .currentSortContainer {
-	padding: 10px 14px;
-	border-radius: 8px;
-	background-color: var(--White);
-	border: 2px solid var(--DarkGray16);
-	width: fit-content;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	gap: 8px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background-color: var(--White);
+  border: 2px solid var(--DarkGray16);
+  width: fit-content;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
-	&:not(:has(.openIcon)):hover .sortIcon {
-		animation: moveArrow 1s ease-in-out infinite;
-		animation-delay: .5s;
-	}
+  &:not(:has(.openIcon)):hover .sortIcon {
+    animation: moveArrow 1s ease-in-out infinite;
+    animation-delay: .5s;
+  }
 }
 
 .currentSortText {
-	font-size: 14px;
-	font-weight: 600;
-	user-select: none;
+  font-size: 14px;
+  font-weight: 600;
+  user-select: none;
 }
 
 .sortIcon {
-	transform: rotate(0deg);
-	fill: var(--DarkGray);
-	transition: .2s;
+  transform: rotate(0deg);
+  fill: var(--DarkGray);
+  transition: .2s;
 }
 
 .openIcon {
-	transform: rotate(-180deg);
+  transform: rotate(-180deg);
 }
 
 .sortListContainer {
-	position: absolute;
-	padding: 6px;
-	background-color: var(--White);
-	border: 2px solid var(--DarkGray16);
-	border-radius: 8px;
-	display: flex;
-	flex-direction: column;
-	z-index: 2;
-	user-select: none;
-	bottom: -150px;
-	gap: 2px;
+  position: absolute;
+  padding: 6px;
+  background-color: var(--White);
+  border: 2px solid var(--DarkGray16);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  user-select: none;
+  bottom: -150px;
+  gap: 2px;
+  z-index: 4;
 }
 
 .sortItem {
-	padding: 8px 7px;
-	border-radius: 8px;
-	background-color: transparent;
-	transition: .2s;
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	cursor: pointer;
-	font-size: 12px;
+  padding: 8px 7px;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: .2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 12px;
 
-	&:hover {
-		background-color: var(--DarkGray8);
-	}
+  &:hover {
+    background-color: var(--DarkGray8);
+  }
 }
 
 .activeSort {
-	background-color: var(--DarkGray16);
+  background-color: var(--DarkGray16);
 
-	&:hover {
-		background-color: var(--DarkGray16);
-	}
+  &:hover {
+    background-color: var(--DarkGray16);
+  }
 }
 
 .checkIcon {
-	stroke: var(--DarkGray);
+  stroke: var(--DarkGray);
 }
 
 @keyframes moveArrow {
-	50% {
-		transform: translateY(5px) scale(1.1);
-	}
+  50% {
+    transform: translateY(5px) scale(1.1);
+  }
 
 }

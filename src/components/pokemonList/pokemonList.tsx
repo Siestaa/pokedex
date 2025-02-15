@@ -52,15 +52,15 @@ export const PokemonList = observer(() => {
     return () => {
       observer.disconnect()
     }
-  }, [rootStore.pokemon.length, triggerFetchPokemon, isFetching])
+  }, [rootStore.pokemonsList.length, triggerFetchPokemon, isFetching])
 
   useEffect(() => {
-    setTriggerFetchPokemon(rootStore?.pokemon[rootStore.pokemon.length - fetchedElement]?.name)
-  }, [rootStore.pokemon[rootStore.pokemon.length - fetchedElement]])
+    setTriggerFetchPokemon(rootStore?.pokemonsList[rootStore.pokemonsList.length - fetchedElement]?.name)
+  }, [rootStore.pokemonsList[rootStore.pokemonsList.length - fetchedElement]])
 
   return (
     <div className={styles.listContainer}>
-      {rootStore.pokemon.map((poke) => {
+      {rootStore.pokemonsList.map((poke) => {
         return (
           <div
             key={poke.id}
@@ -79,7 +79,7 @@ export const PokemonList = observer(() => {
       })}
       {(isFetching) ? (Array.from({ length: 18 }).map((_, index) => (
         <Skeleton key={index} />
-      ))) : rootStore.pokemon.length === 0 && <EmptyPokemonList />}
+      ))) : rootStore.pokemonsList.length === 0 && <EmptyPokemonList />}
 
     </div>
   )
