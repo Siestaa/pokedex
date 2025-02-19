@@ -40,19 +40,9 @@ export const PokemonCard = ({ name, number, img, types, alt, slug }: PokemonCard
     if (glow.current) glow.current.style.backgroundImage = ''
   }
 
-  const handleClick = (e: React.MouseEvent) => {
-    e.preventDefault()
-    setIsAnimated(true)
-    setTimeout(() => {
-      window.location.href = (`/${slug}`)
-      setIsAnimated(false)
-    }, 1000)
-  }
-
 
   return (
-    <div>
-      <Link href={`/${slug}`} onClick={handleClick}>
+      <Link href={`/${slug}`}>
         <div className={`${styles.cardContainer}  ${styles[types[0]]}`}
           ref={card}
           onMouseEnter={moveCard}
@@ -69,7 +59,6 @@ export const PokemonCard = ({ name, number, img, types, alt, slug }: PokemonCard
           <PokeballIcon className={styles.pokeballIcon} />
         </div>
       </Link>
-    </div>
   )
 
 }
