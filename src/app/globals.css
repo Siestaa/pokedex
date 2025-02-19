@@ -84,3 +84,10 @@ main {
   background-color: var(--DarkGray16);
   z-index: 99;
 }
+
+.blockScroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  padding-right: 15px;
+}

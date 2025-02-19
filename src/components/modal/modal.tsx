@@ -8,13 +8,20 @@ const preventScroll = (event: WheelEvent | TouchEvent) => {
 }
 
 const disableScroll = () => {
-  window.addEventListener("wheel", preventScroll, { passive: false })
-  window.addEventListener("touchmove", preventScroll, { passive: false })
+  const mainComp = document?.querySelector<HTMLElement>(".blockScroll")
+  if (mainComp) {
+    mainComp.addEventListener("wheel", preventScroll, { passive: false })
+    mainComp.addEventListener("touchmove", preventScroll, { passive: false })
+  }
+
 }
 
 const enableScroll = () => {
-  window.removeEventListener("wheel", preventScroll)
-  window.removeEventListener("touchmove", preventScroll)
+  const mainComp = document?.querySelector<HTMLElement>(".blockScroll")
+  if (mainComp) {
+    mainComp.removeEventListener("wheel", preventScroll)
+    mainComp.removeEventListener("touchmove", preventScroll)
+  }
 }
 
 export const Modal = ({ children }: { children: React.ReactNode }) => {

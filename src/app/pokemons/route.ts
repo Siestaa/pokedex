@@ -21,7 +21,7 @@ interface Pokemon {
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const page = parseInt(url.searchParams.get("page") || "1", 10);
-  const limit = 50;
+  const limit = parseInt(url.searchParams.get("limit") || "50", 10);
 
   const defaultFilters = {
     types: [] as string[],
@@ -51,10 +51,6 @@ export async function GET(request: Request) {
     ZToA: (a, b) => b.name.localeCompare(a.name),
   };
 
-  const sortedPokemons = [...allPokemons].sort(
-    sortStrategies[customFilters.sort] || sortStrategies.MinId
-  );
-
   const applyRangeFilter = (
     items: Pokemon[],
     filters: string[],
@@ -80,17 +76,27 @@ export async function GET(request: Request) {
     },
   };
 
-  let filteredPokemons = sortedPokemons;
+  let filteredPokemons = [...allPokemons];
 
   if (customFilters.text) {
-    filteredPokemons = filteredPokemons.filter(
-      (pokemon) =>
-        pokemon.name.toLowerCase().includes(customFilters.text.toLowerCase()) ||
-        pokemon.type.some((item) =>
-          item.includes(customFilters.text.toLowerCase())
-        ) ||
-        pokemon.number.includes(customFilters.text) ||
-        pokemon.slug.includes(customFilters.text)
+    const filterByTextPokemons = customFilters.text
+      .split(",")
+      .flatMap((textFilter: string) =>
+        filteredPokemons.filter(
+          (pokemon: Pokemon) =>
+            pokemon.name.toLowerCase().includes(textFilter.toLowerCase()) ||
+            pokemon.type.some((item) =>
+              item.includes(textFilter.toLowerCase())
+            ) ||
+            pokemon.number.includes(textFilter) ||
+            pokemon.slug.includes(textFilter)
+        )
+      );
+
+    filteredPokemons = Array.from(
+      new Set(filterByTextPokemons.map((pokemon: Pokemon) => pokemon.id))
+    ).map((id) =>
+      filterByTextPokemons.find((pokemon: Pokemon) => pokemon.id === id)
     );
   }
 
@@ -113,7 +119,11 @@ export async function GET(request: Request) {
     sizeRanges.weight
   );
 
-  const paginatedPokemons = filteredPokemons.slice(startIndex, endIndex);
+  const sortedPokemons = [...filteredPokemons].sort(
+    sortStrategies[customFilters.sort] || sortStrategies.MinId
+  );
+
+  const paginatedPokemons = sortedPokemons.slice(startIndex, endIndex);
 
   return NextResponse.json({
     page,

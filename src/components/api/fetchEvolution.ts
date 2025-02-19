@@ -1,32 +1,38 @@
 import axios from "axios";
-import { IEvolution } from "../pokemonDetails/pokemonInfo.types";
+import { EvolutionChainInfo } from "../pokemonDetails/pokemonInfo.types";
+
+type EvolutionStep = [string, string, string] | [];
+
+export interface EvolutionChain {
+  steps: EvolutionStep[];
+}
 
 const buildEvolutionChain = (
-  responseEvol: any,
-  currentEvol: IEvolution[] = [],
-  level: number = 0
-): IEvolution[] => {
-  const nestLevel = level + 1;
+  responseEvol: EvolutionChainInfo,
+  currentEvol: EvolutionChain = { steps: [] }
+): EvolutionChain => {
+  const evolList = currentEvol;
 
-  currentEvol.push({
-    name: responseEvol.species.name ?? "Default",
-    lvl: responseEvol.evolution_details?.[0]?.min_level ?? "0",
-    isLast: !responseEvol.evolves_to || responseEvol.evolves_to.length === 0,
-    nestLevel: nestLevel,
-  });
+  if (responseEvol.evolves_to.length > 0) {
+    responseEvol.evolves_to.forEach((evol) => {
+      const evolStep: EvolutionStep = [
+        responseEvol.species.name,
+        evol.species.name,
+        evol.evolution_details[0]?.min_level?.toString() ?? "???",
+      ];
 
-  if (responseEvol.evolves_to && responseEvol.evolves_to.length > 0) {
-    responseEvol.evolves_to.forEach((item: any) =>
-      buildEvolutionChain(item, currentEvol, nestLevel)
-    );
+      evolList.steps.push(evolStep);
+
+      buildEvolutionChain(evol, evolList);
+    });
   }
 
-  return currentEvol;
+  return evolList;
 };
 
 export const fetchEvolution = async (
   pokemonName: string,
-  setEvolChain: (obj: IEvolution[]) => void
+  setEvolChain: (obj: EvolutionChain) => void
 ) => {
   const controller = new AbortController();
 

@@ -25,7 +25,7 @@
   background-color: var(--LightGray);
   display: flex;
   flex-direction: column;
-
+  overflow: scroll;
 }
 
 .titleContainer {

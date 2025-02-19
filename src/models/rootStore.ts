@@ -11,6 +11,7 @@ export const RootStore = t
     totalItems: t.optional(t.number, 1025),
     showFilter: t.optional(t.boolean, false),
     filters: PokemonFiltersModel,
+    blockScroll: t.optional(t.boolean, false),
     currentPokemon: t.optional(PokemonModel, {
       id: 0,
       name: "",
@@ -97,11 +98,17 @@ export const RootStore = t
     const fetchCurrentPokemon = (pokemon: string) => {
       const foundPokemon = store.pokemonsList.find(
         (pokemonItem) =>
-          pokemon.toLowerCase() === pokemonItem.name.toLowerCase()
+          pokemon.toLowerCase() === pokemonItem.slug.toLowerCase()
       );
       if (foundPokemon) {
         store.currentPokemon = JSON.parse(JSON.stringify(foundPokemon));
       }
+    };
+
+    const toggleScroll = (isBlock: boolean) => {
+      isBlock
+        ? (rootStore.blockScroll = true)
+        : (rootStore.blockScroll = false);
     };
 
     return {
@@ -115,6 +122,7 @@ export const RootStore = t
       searchByText,
       fetchCurrentPokemon,
       resetFilterText,
+      toggleScroll,
     };
   });
 
