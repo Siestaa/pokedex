@@ -18,6 +18,7 @@ export interface Pokemon {
   species: NamedAPIResource<PokemonSpecies>;
   stats: PokemonStat[];
   types: PokemonType[];
+  ThumbnailImage: string;
 }
 
 export interface NamedAPIResource<T> {
@@ -274,6 +275,7 @@ export const defaultPokemon: Pokemon = {
       },
     },
   ],
+  ThumbnailImage: "/pokeballInfo.png",
 };
 
 interface EvolutionTrigger {

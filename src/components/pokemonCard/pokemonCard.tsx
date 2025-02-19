@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { PokeballIcon } from '../../../public/icons'
 import { PokemonType } from '../pokemonType/pokemonType'
 import { calculateCoordinate } from './calculateCoordinate'
@@ -19,7 +19,6 @@ interface PokemonCardProps {
 export const PokemonCard = ({ name, number, img, types, alt, slug }: PokemonCardProps) => {
   const card = useRef<HTMLDivElement>(null)
   const glow = useRef<HTMLDivElement>(null)
-  const [isAnimated, setIsAnimated] = useState(false)
 
   const getCoordinate = (e: MouseEvent) => {
     const bounds = card.current?.getBoundingClientRect()
@@ -42,10 +41,8 @@ export const PokemonCard = ({ name, number, img, types, alt, slug }: PokemonCard
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault()
-    setIsAnimated(true)
     setTimeout(() => {
       window.location.href = (`/${slug}`)
-      setIsAnimated(false)
     }, 1000)
   }
 
