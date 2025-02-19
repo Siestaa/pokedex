@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { PokeballIcon } from '../../../public/icons'
 import { PokemonType } from '../pokemonType/pokemonType'
 import { calculateCoordinate } from './calculateCoordinate'
@@ -19,6 +19,7 @@ interface PokemonCardProps {
 export const PokemonCard = ({ name, number, img, types, alt, slug }: PokemonCardProps) => {
   const card = useRef<HTMLDivElement>(null)
   const glow = useRef<HTMLDivElement>(null)
+  const [isAnimated, setIsAnimated] = useState(false)
 
   const getCoordinate = (e: MouseEvent) => {
     const bounds = card.current?.getBoundingClientRect()
@@ -29,7 +30,6 @@ export const PokemonCard = ({ name, number, img, types, alt, slug }: PokemonCard
 
   const moveCard = () => {
     if (card.current) card.current.addEventListener('mousemove', getCoordinate)
-    if (card.current) console.log(card.current.style.transform)
   }
 
   const leaveCard = () => {
@@ -40,25 +40,36 @@ export const PokemonCard = ({ name, number, img, types, alt, slug }: PokemonCard
     if (glow.current) glow.current.style.backgroundImage = ''
   }
 
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setIsAnimated(true)
+    setTimeout(() => {
+      window.location.href = (`/${slug}`)
+      setIsAnimated(false)
+    }, 1000)
+  }
+
 
   return (
-    <Link href={`/${slug}`}>
-      <div className={`${styles.cardContainer}  ${styles[types[0]]}`}
-        ref={card}
-        onMouseEnter={moveCard}
-        onMouseLeave={leaveCard}>
-        <div ref={glow} className={styles.glow} />
-        <h2 className={styles.cardName}>{name}</h2>
-        <p className={styles.cardNumber}>#{number}</p>
-        <Image className={styles.cardImage} src={img} width={180} height={180} alt={alt} priority={true} />
-        <div className={`${styles.typesCardContainer}`}>
-          {types.map((type) =>
-            <PokemonType key={type} pokemonType={type} />
-          )}
+    <div>
+      <Link href={`/${slug}`} onClick={handleClick}>
+        <div className={`${styles.cardContainer}  ${styles[types[0]]}`}
+          ref={card}
+          onMouseEnter={moveCard}
+          onMouseLeave={leaveCard}>
+          <div ref={glow} className={styles.glow} />
+          <h2 className={styles.cardName}>{name}</h2>
+          <p className={styles.cardNumber}>#{number}</p>
+          <Image className={styles.cardImage} src={img} width={180} height={180} alt={alt} priority={true} />
+          <div className={`${styles.typesCardContainer}`}>
+            {types.map((type) =>
+              <PokemonType key={type} pokemonType={type} />
+            )}
+          </div>
+          <PokeballIcon className={styles.pokeballIcon} />
         </div>
-        <PokeballIcon className={styles.pokeballIcon} />
-      </div>
-    </Link>
+      </Link>
+    </div>
   )
 
 }

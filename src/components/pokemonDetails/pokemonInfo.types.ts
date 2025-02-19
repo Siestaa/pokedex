@@ -276,9 +276,44 @@ export const defaultPokemon: Pokemon = {
   ],
 };
 
-export interface IEvolution {
+interface EvolutionTrigger {
   name: string;
-  lvl: string;
-  isLast: boolean;
-  nestLevel: number;
+  url: string;
+}
+
+interface EvolutionDetails {
+  gender: null | string;
+  held_item: null | string;
+  item: null | string;
+  known_move: null | string;
+  known_move_type: null | string;
+  location: null | string;
+  min_affection: null | number;
+  min_beauty: null | number;
+  min_happiness: null | number;
+  min_level: number;
+  needs_overworld_rain: boolean;
+  party_species: null | string;
+  party_type: null | string;
+  relative_physical_stats: null | number;
+  time_of_day: string;
+  trade_species: null | string;
+  trigger: EvolutionTrigger;
+  turn_upside_down: boolean;
+}
+
+export interface EvolutionChainInfo {
+  evolution_details: EvolutionDetails[];
+  evolves_to: EvolutionChainInfo[];
+  is_baby: boolean;
+  species: {
+    name: string;
+    url: string;
+  };
+}
+
+export interface PokemonEvolutionChain {
+  baby_trigger_item: null | string;
+  chain: EvolutionChainInfo;
+  id: number;
 }

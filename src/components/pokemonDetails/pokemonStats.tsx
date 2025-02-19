@@ -15,7 +15,7 @@ export const PokemonStats = ({ pokemonInfo }: PokemonAboutProps) => {
     setAvgStat(Math.ceil(pokemonInfo.stats?.reduce((acc, stat) => acc + stat.base_stat, 0) / pokemonInfo.stats?.length))
   }, [pokemonInfo])
   return (
-    <div className={styles.aboutContainer}>
+    <div className={styles.infoContainer}>
       {stats?.map((stat) => (
         <div key={stat.stat.name} className={styles.statsContainer}>
           <span className={styles.statsName}>{stat.stat.name.split('-').map((word) => word[0].toUpperCase() + word.substring(1)).join(' ')}</span>

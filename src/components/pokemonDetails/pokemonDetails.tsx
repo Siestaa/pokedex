@@ -1,10 +1,9 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { fetchEvolution } from '../api/fetchEvolution'
 import { fetchPokemon } from '../api/fetchPokemon'
 import { PokemonAbout } from './pokemonAbout'
 import { PokemonEvolution } from './pokemonEvolution'
-import { defaultPokemon, IEvolution, Pokemon } from './pokemonInfo.types'
+import { defaultPokemon, Pokemon } from './pokemonInfo.types'
 import { PokemonStats } from './pokemonStats'
 import styles from "./styles.module.css"
 
@@ -22,17 +21,15 @@ export const PokemonDetails = ({ pokemonName }: PokemonDetailsProps) => {
   const [currentTab, setCurrentTab] = useState('about')
   const [isLoading, setIsLoading] = useState(false)
   const [pokemonInfo, setPokemonInfo] = useState<Pokemon>(defaultPokemon)
-  const [evolvList, setEvolvList] = useState<IEvolution[] | null>(null)
 
   useEffect(() => {
     fetchPokemon(pokemonName,
       setIsLoading,
       setPokemonInfo)
-    fetchEvolution(pokemonName, setEvolvList)
   }, [pokemonName])
 
   return (
-    <div className={styles.infoContainer}>
+    <div className={styles.detailsContainer}>
       <div className={styles.infoTabs}>
         {Object.values(ITabs).map((tab) => (
           <div
@@ -45,14 +42,13 @@ export const PokemonDetails = ({ pokemonName }: PokemonDetailsProps) => {
         ))}
       </div>
       <div className={styles.currentInfo}>
-        {isLoading ? <div>Loading...</div> :
-          currentTab === ITabs.about ? (
-            <PokemonAbout pokemonInfo={pokemonInfo} />
-          ) : currentTab === ITabs.stats ? (
-            <PokemonStats pokemonInfo={pokemonInfo} />
-          ) : (
-            evolvList && evolvList?.length > 0 && <PokemonEvolution pokemonEvolv={evolvList} />
-          )}
+        {currentTab === ITabs.about ? (
+          <PokemonAbout pokemonInfo={pokemonInfo} isLoading={isLoading} />
+        ) : currentTab === ITabs.stats ? (
+          <PokemonStats pokemonInfo={pokemonInfo} />
+        ) : (
+          <PokemonEvolution pokemonName={pokemonName} />
+        )}
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-.infoContainer {
+.detailsContainer {
   width: 100%;
   transform: translateY(-30px);
   background-color: var(--White);
@@ -36,7 +36,7 @@
   }
 }
 
-.aboutContainer {
+.infoContainer {
   padding: 30px;
   display: flex;
   gap: 24px;
@@ -45,6 +45,13 @@
   font-weight: 600;
   color: var(--DarkGray);
   height: 363px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.infoContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .aboutStatsContainer {
@@ -75,4 +82,45 @@
   height: 6px;
   border-radius: 8px;
   content: '';
+}
+
+.loadInfo {
+  display: inline-block;
+  width: 50px;
+  height: 16px;
+  border-radius: 8px;
+  background-color: var(--DarkGray24);
+}
+
+.evolList {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.evolImageContainer {
+  position: relative;
+}
+
+.pokeballIcon {
+  position: absolute;
+  fill: var(--DarkGray16);
+  width: 128px;
+  height: 128px;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.evolImage {
+  position: relative;
+  z-index: 2;
+}
+
+.lvlInfo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
