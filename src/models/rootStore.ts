@@ -106,9 +106,11 @@ export const RootStore = t
     };
 
     const toggleScroll = (isBlock: boolean) => {
-      isBlock
-        ? (rootStore.blockScroll = true)
-        : (rootStore.blockScroll = false);
+      if (isBlock) {
+        rootStore.blockScroll = true;
+      } else {
+        rootStore.blockScroll = false;
+      }
     };
 
     return {
