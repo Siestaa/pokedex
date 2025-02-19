@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { EvolArrowIcon, PokeballBackIcon } from '../../../public/icons'
 import { EvolutionChain, fetchEvolution } from '../api/fetchEvolution'
+import { Pokemon } from './pokemonInfo.types'
 import styles from "./styles.module.css"
 
 interface PokemonEvolutionProps {
@@ -53,8 +54,8 @@ export const PokemonEvolution = ({ pokemonName }: PokemonEvolutionProps) => {
           }),
         },
       }).then((response) => {
-        response.data.pokemons.forEach((pokemon: any) => {
-          setFetchedPokemons((prev) => [...prev, { name: pokemon.name, img: pokemon.ThumbnailImage }])
+        response.data.pokemons.forEach((pokemon: Pokemon) => {
+          setFetchedPokemons((prev) => [...prev, { name: pokemon.name, img: pokemon?.ThumbnailImage }])
         })
       })
     }

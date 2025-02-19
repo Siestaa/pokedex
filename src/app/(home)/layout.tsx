@@ -1,4 +1,3 @@
-import { useStore } from '@/models/rootStore'
 import { Roboto } from 'next/font/google'
 import Home from '../../components/home/home'
 
@@ -12,8 +11,6 @@ const HomeLayout = ({
 }: Readonly<{
   children: React.ReactNode
 }>) => {
-
-  const rootStore = useStore()
 
   return (
     <main className={`${roboto.className}`}>
